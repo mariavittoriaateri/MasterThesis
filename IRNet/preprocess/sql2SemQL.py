@@ -16,6 +16,7 @@ import sys
 import copy
 from utils import load_dataSets
 
+sys.path.insert(0, '') # this line was added by me to avoid an error message.
 sys.path.append("..")
 from src.rule.semQL import Root1, Root, N, A, C, T, Sel, Sup, Filter, Order
 
