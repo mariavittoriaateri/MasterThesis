@@ -44,7 +44,8 @@ python smbop/eval_final/evaluation.py --gold dataset/dev_gold.sql --pred preds.s
 ``` 
 
 ## Pretrained model
-You can download a pretrained model from [here](https://drive.google.com/file/d/1pQvg2sT7h9t_srgmN1nGGMfIPa62U9ag/view?usp=sharing).
+You can download a pretrained model from: https://drive.google.com/file/d/1jdS7VJ5fB3ZUvokCOAosk-N5tAbi9BoI/view?usp=drive_link
+
 It achieves the following results on the offical script:
 
 ```
