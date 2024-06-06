@@ -28,7 +28,7 @@ To obtain the predictions from IRNet, first the IRNet system has to be set-up fo
 The steps outlined at point 1 allow to obtain DIRNDL instances in the tables.json and the dev.json files as described by the authors of Spider. These two resulting files for Experiment 1 can be found here: ADD LINK!!. Nevertheless, the IRNet system uses a modified version of the original dev.json file, as described in Listing 5 of my thesis work. For this reason, before obtaining the predictions from the system, these preprocessing steps must be carried out:
 
 * Save the new tables.json and dev.json files under `./data/` directory
-* Run `./preprocess/run_me.sh`. This script will process the dev.json file and generate the IRNet-specific development format file, which is needed to generate the predictions and for evaluation. The generated `predict.json` file must then renamed as `dev.json` and substitute the previous `dev.json` file.
+* Run `./preprocess/run_me.sh`. This script will process the dev.json file and generate the IRNet-specific development format file, which is needed to generate the predictions and for evaluation. The generated `predict.json` file (or any other name chosen for it) must then renamed as `dev.json` and substitute the previous `dev.json` file.
 * Run `eval.sh` to generate the predictions. More specifically, this script produces a file named e.g. `output` with the SQL queries predicted by the system given the NL questions contained in the `dev.json` file, and a `gold.txt` file with the golden queries, extrapolated from the `dev.json` file.
 `sh eval.sh [GPU_ID] [OUTPUT_FOLD]`
 
