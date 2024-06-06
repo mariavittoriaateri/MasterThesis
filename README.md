@@ -49,11 +49,11 @@ Follow these steps in the SmBop directory:
 3. Store `dirndl.sql` and `dirndl.sqlite` (available at the link above) in `./dataset/database/dirndl`.
 4. Substitute the original tables.json file with the one containing the DIRNDL description as well.
 
-# A) Perform direct inference
+### A) Perform direct inference
 
 One way to go with the SmBop system is to perform direct inference using the `start_demo.py` script, where one must simply pass the NL question and the database id into `print(inference())`.
 
-# B) Obtain predictions based on development instances
+### B) Obtain predictions based on development instances
 
 Another way to go with the SmBop system is to...
 ## Evaluation
