@@ -19,7 +19,9 @@ Given the simplified and smaller version of the DIRNDL database, created by me a
 
 ## 2. Generating predicted queries from IRNet
 
-To obtain the predictions from IRNet, first the IRNet system has to be set-up following these steps:
+IRNet does not allow for direct inference without explicitly stating development instances.
+
+To obtain the predictions from IRNet, first the IRNet system has to be set-up following these steps in the IRNet directory:
 
 * Download [Glove Embedding](https://nlp.stanford.edu/data/wordvecs/glove.42B.300d.zip) and put `glove.42B.300d` under `./data/` directory
 * Download [Pretrained IRNet](https://drive.google.com/open?id=1VoV28fneYss8HaZmoThGlvYU3A-aK31q) and put `IRNet_pretrained.model` under `./saved_model/` directory
@@ -33,6 +35,25 @@ The steps outlined at point 1 allow to obtain DIRNDL instances in the tables.jso
 `sh eval.sh [GPU_ID] [OUTPUT_FOLD]`
 
 
-## Generating predicted queries from SmBop
+## 3. Generating predicted queries from SmBop
 
+SmBop allows both for direct inference without development instances and also for prediction based on development instances.
+
+Follow these steps in the SmBop directory:
+
+1. Download the pretrained model from [here](https://drive.google.com/file/d/1jdS7VJ5fB3ZUvokCOAosk-N5tAbi9BoI/view?usp=drive_link).
+2. Create a dataset directory.
+   ```sh
+   mkdir -p `./dataset`
+2. Store the Spider data from [here](https://drive.google.com/open?id=1YFV1GoLivOMlmunKW0nkzefKULO4wtrn) into `./dataset`.
+3. Store `dirndl.sql` and `dirndl.sqlite` (available at the link above) in `./dataset/database/dirndl`.
+4. Substitute the original tables.json file with the one containing the DIRNDL description as well.
+
+# A) Perform direct inference
+
+One way to go with the SmBop system is to perform direct inference using the `start_demo.py` script, where one must simply pass the NL question and the database id into `print(inference())`.
+
+# B) Obtain predictions based on development instances
+
+Another way to go with the SmBop system is to...
 ## Evaluation
