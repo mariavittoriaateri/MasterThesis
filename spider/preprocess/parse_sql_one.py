@@ -83,6 +83,7 @@ if __name__ == '__main__':
     table = tables[db_id]
     schema = Schema(schema, table)
     sql_label = get_sql(schema, sql)
+    print(sql_label) # This prints the output parsed query
 
 
 
