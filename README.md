@@ -29,6 +29,8 @@ The steps outlined at point 1 allow to obtain DIRNDL instances in the tables.jso
 
 * Save the new tables.json and dev.json files under `./data/` directory
 * Run `./preprocess/run_me.sh`. This script will process the dev.json file and generate the IRNet-specific development format file, which is needed to generate the predictions and for evaluation. The generated `predict.json` file must then renamed as `dev.json` and substitute the previous `dev.json` file.
+* Run `eval.sh` to generate the predictions. More specifically, this script produces a file named e.g. `output` with the SQL queries predicted by the system given the NL questions contained in the `dev.json` file, and a `gold.txt` file with the golden queries, extrapolated from the `dev.json` file.
+`sh eval.sh [GPU_ID] [OUTPUT_FOLD]`
 
 
 ## Generating predicted queries from SmBop
