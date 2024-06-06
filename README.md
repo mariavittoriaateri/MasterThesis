@@ -55,5 +55,8 @@ One way to go with the SmBop system is to perform direct inference using the `st
 
 ### B) Obtain predictions based on development instances
 
-Another way to go with the SmBop system is to...
+Another way to go with the SmBop system is to run eval.py which takes as input: /database, tables.json, dev.json (in Spider format) and outputs the prediction file.
+
 ## Evaluation
+
+In order to run the official evaluation script of Spider, the evaluation.py and process.py scripts must be taken from Spider.
