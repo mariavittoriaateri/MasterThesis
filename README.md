@@ -1,4 +1,4 @@
-# Generating DIRNDL instances for `tables.json` and `dev.json`
+## Generating DIRNDL instances for Spider-formatted `tables.json` and `dev.json`
 
 Given the simplified and smaller version of the DIRNDL database, created by me and to be found at: [DIRNDL Database](https://drive.google.com/drive/folders/1reK5Lx7EgKV2ooR0cYOrBXOPUOId43lH?usp=drive_link), the first step consists in obtaining the files representing the structure of the database in the formats required by the systems, as outlined in Section 7 of my thesis work. For this purpose, these steps must be followed:
 
