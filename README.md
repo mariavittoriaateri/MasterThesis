@@ -58,7 +58,13 @@ One way to go with the SmBop system is to perform direct inference using the `st
 Another way to go with the SmBop system is to run eval.py which takes as input: /database directory path, tables.json, dev.json (in the original Spider format) and outputs the prediction file. The command to be run is:
 ```sh
 python eval.py --archive_path {model_path} --output {output file name}
+```
 
 ## Evaluation
 
-In order to run the official evaluation script of Spider, the evaluation.py and process.py scripts must be taken from Spider.
+A way to evaluate to results is by using the official Spider evaluation script of Spider, to be found at spider/evaluation.py.
+```sh
+python smbop/eval_final/evaluation.py --gold dataset/dev_gold.sql --pred preds.sql --etype all --db  dataset/database  --table dataset/tables.json
+```
+
+the evaluation.py and process.py scripts must be taken from Spider.
