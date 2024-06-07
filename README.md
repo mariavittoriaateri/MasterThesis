@@ -62,9 +62,8 @@ python eval.py --archive_path {model_path} --output {output file name}
 
 ## Evaluation
 
-A way to evaluate to results is by using the official Spider evaluation script of Spider, to be found at spider/evaluation.py.
+A way to evaluate to results is by using the official Spider evaluation script of Spider, to be found at `spider/evaluation.py`.
 ```sh
-python smbop/eval_final/evaluation.py --gold dataset/dev_gold.sql --pred preds.sql --etype all --db  dataset/database  --table dataset/tables.json
+python evaluation.py --gold {file with golden queries} --pred {file with predicted queries} --etype {state evaluation metrics} --db  {directory with databases}  --table {tables.json file}
 ```
-
-the evaluation.py and process.py scripts must be taken from Spider.
+The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` and must be present together when copied in other directories (in this case in the IRNet and in the SmBop directories) since `evaluation.py` inherits some modules from `process_sql.py`.
