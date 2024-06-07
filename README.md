@@ -64,6 +64,12 @@ python eval.py --archive_path {model_path} --output {output file name}
 
 A way to evaluate to results is by using the official Spider evaluation script of Spider, to be found at `spider/evaluation.py`.
 ```sh
-python evaluation.py --gold {file with golden queries} --pred {file with predicted queries} --etype {state evaluation metrics} --db  {directory with databases}  --table {tables.json file}
+python evaluation.py --gold {file with golden queries} --pred {file with predicted queries} --etype {evaluation metrics type} --db  {directory with databases}  --table {tables.json file}
 ```
+
+Please note the following when passing the arguments:
+- {file with golden queries} must be a .sql file where each line is `a gold SQL \t db_id`
+- {file with predicted queries} must be a .sql file where each line is a predicted SQL
+- {evaluation metrics type} is a field that specifies the type of evaluation metrics desired; "match" is for exact set matching score, "exec" is for execution score, and "all" is for both.
+- 
 The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` and must be present together when copied in other directories (in this case in the IRNet and in the SmBop directories) since `evaluation.py` inherits some modules from `process_sql.py`.
