@@ -79,11 +79,9 @@ The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` an
 ### B) Taylored Evaluation script
 
 
-### 2. Citations
+## Citations
 
 ```markdown
-## References
-
 This repository makes use of the following projects:
 
 1. [Spider](https://github.com/taoyds/spider)
