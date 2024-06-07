@@ -60,7 +60,7 @@ Another way to go with the SmBop system is to run eval.py which takes as input: 
 python eval.py --archive_path {model_path} --output {output file name}
 ```
 
-## Evaluation
+## 4. Evaluation
 
 A way to evaluate to results is by using the official Spider evaluation script of Spider, to be found at `spider/evaluation.py`.
 ```sh
