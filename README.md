@@ -75,3 +75,7 @@ Please note the following when passing the arguments:
 - {evaluation metrics type} is a field that specifies the type of evaluation metrics desired; "match" is for exact set matching score, "exec" is for execution score, and "all" is for both.
 
 The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` and must be present together when copied in other directories (in this case in the IRNet and in the SmBop directories) since `evaluation.py` inherits some modules from `process_sql.py`.
+
+### B) Taylored Evaluation script
+
+
