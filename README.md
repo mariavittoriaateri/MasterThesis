@@ -84,8 +84,8 @@ The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` an
 ```markdown
 This repository makes use of the following projects:
 
-1. [Spider](https://github.com/taoyds/spider)
-2. [IRNet](https://github.com/microsoft/IRNet)
-3. [SmBop](https://github.com/OhadRubin/SmBop)
+1. Spider (https://github.com/taoyds/spider)
+2. IRNet(https://github.com/microsoft/IRNet)
+3. SmBop(https://github.com/OhadRubin/SmBop)
 
 
