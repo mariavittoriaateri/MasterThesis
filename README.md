@@ -76,9 +76,11 @@ Please note the following when passing the arguments:
 
 The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` and must be present together when copied in other directories (in this case in the IRNet and in the SmBop directories) since `evaluation.py` inherits some modules from `process_sql.py`.
 
+
+
 ### B) Taylored Evaluation script
 
-Another way to evaluate the results is by using the taylor-made evaluation script, to be found at `./dirndl_evaluation_exp1.py`.
+Another way to evaluate the results is by using the taylor-made evaluation script, to be found at `./dirndl_evaluation_exp1.py`. This one allows for a more fine-grained analysis of the similarity between the predicted and the gold queries, based both on full-word and n-gram overlaps.
 ```sh
 python dirndl_evaluation_exp1.py
 ```
@@ -86,6 +88,9 @@ python dirndl_evaluation_exp1.py
 In the `main` method, two file paths must be specified:
 - `gold_file` must correspond to a `gold_queries.sql` file where each line is a gold SQL.
 - `predicted_file` must correspond to a `predicted_queries.sql` file where each line is a predicted SQL.
+
+The gold and predicted files resulting from IRNet in Experiment 1 are found at `./gold_queries_irnet_exp1.sql` and `./pred_queries_irnet_exp1.sql`.
+The gold and predicted files resulting from SmBop in Experiment 1 are found at `./gold_queries_smbop_exp1.sql` and `./pred_queries_smbop_exp1.sql`.
 
 ## Citations
 
