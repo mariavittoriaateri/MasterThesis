@@ -64,7 +64,7 @@ python eval.py --archive_path {model_path} --output {output file name}
 
 ### A) Evaluation via official Spider evaluation script
 
-A way to evaluate to results is by using the official Spider evaluation script of Spider, to be found at `spider/evaluation.py`.
+A way to evaluate the results is by using the official Spider evaluation script of Spider, to be found at `spider/evaluation.py`.
 ```sh
 python evaluation.py --gold {file with golden queries} --pred {file with predicted queries} --etype {evaluation metrics type} --db  {directory with databases}  --table {tables.json file}
 ```
@@ -78,6 +78,14 @@ The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` an
 
 ### B) Taylored Evaluation script
 
+Another way to evaluate the results is by using the taylor-made evaluation script, to be found at `./dirndl_evaluation_exp1.py`.
+```sh
+python dirndl_evaluation_exp1.py
+```
+
+In the `main` method, two file paths must be specified:
+- `gold_file` must correspond to a `gold_queries.sql` file where each line is a gold SQL.
+- `predicted_file` must correspond to a `predicted_queries.sql` file where each line is a predicted SQL.
 
 ## Citations
 
