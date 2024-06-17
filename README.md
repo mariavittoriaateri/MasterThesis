@@ -76,7 +76,7 @@ Please note the following when passing the arguments:
 
 The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` and must be present together when copied in other directories (in this case in the IRNet and in the SmBop directories) since `evaluation.py` inherits some modules from `process_sql.py`.
 
-
+The results of the official Spider evaluation script based on Experiment 1 are found at `./official_evaluation_irnet_exp1.yml` and `./official_evaluation_smbop_exp1.yml`
 
 ### B) Taylored Evaluation script
 
