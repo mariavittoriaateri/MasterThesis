@@ -1,0 +1,74 @@
+# This file contains the output of the official Spider evaluation script based on the gold-predicted SQL pairs of SmBop for Experiment 1.
+# The system outputs an error with the first predicted query because the FROM clause repeats 'prosody_nodes' twice. Hence the repetition was manually removed.
+
+medium pred: SELECT prosody_nodes.word FROM prosody_nodes WHERE prosody_graph.filesequence = 1 AND syntax_terminal_nodes.word = 3
+medium gold: SELECT word FROM syntax_terminal_nodes WHERE s_num = 3 AND seq = 1
+
+easy pred: SELECT COUNT( * ) FROM prosody_nodes WHERE prosody_nodes.word LIKE '%3%'
+easy gold: SELECT MAX(seq) FROM syntax_terminal_nodes WHERE s_num = 3
+
+medium pred: SELECT prosody_nodes.word FROM prosody_nodes WHERE prosody_nodes.ts = 3
+medium gold: SELECT pos FROM syntax_terminal_nodes WHERE s_num = 3 ORDER BY seq
+
+medium pred: SELECT syntax_terminal_nodes.pos FROM prosody_nodes WHERE prosody_nodes.word = 3
+medium gold: SELECT pos FROM syntax_terminal_nodes WHERE s_num = 3 AND seq = 1
+
+easy pred: SELECT prosody_graph.graph_id FROM prosody_graph WHERE prosody_graph.filesequence = 3
+easy gold: SELECT graph_id FROM syntax_graph WHERE s_num = 3
+
+medium pred: SELECT prosody_nodes.word FROM prosody_nodes WHERE closure.closure_name = 'dlf-nachrichten-200703262000'
+medium gold: SELECT word FROM prosody_nodes WHERE tone = 'NONE' AND filesequence = 'dlf-nachrichten-200703262000'
+
+easy pred: SELECT is_target_syn_root.is_label FROM node WHERE node.node_id = 900514
+easy gold: SELECT is_label FROM is_target_syn_root WHERE syn_root_id = 900614
+
+medium pred: SELECT node.node_type FROM node WHERE node.node_id = 900620
+medium gold: SELECT node_type, grp FROM node WHERE node_id = 900620
+
+medium pred: SELECT edge.edge_type FROM edge WHERE edge.source_id = 56666 AND edge.target_graph = 56690
+medium gold: SELECT grp FROM edge WHERE source_id = 56666 AND source_graph = 1349 AND target_id = 56690
+
+easy pred: SELECT graph_type_definition.name FROM graph_type_definition JOIN node ON graph_type_definition.graph_type_def_id = node.node_type WHERE syntax_nonterminal_nodes.tiger_node_id = 'tigerXML_node'
+easy gold: SELECT name FROM graph_type_definition WHERE grp = 'tigerXML_node'
+
+                     easy                 medium               hard                 extra                all                 
+count                4                    6                    0                    0                    10                  
+=====================   EXECUTION ACCURACY     =====================
+execution            0.000                0.000                0.000                0.000                0.000               
+
+====================== EXACT MATCHING ACCURACY =====================
+exact match          0.000                0.000                0.000                0.000                0.000               
+
+---------------------PARTIAL MATCHING ACCURACY----------------------
+select               0.750                0.333                0.000                0.000                0.500               
+select(no AGG)       0.750                0.333                0.000                0.000                0.500               
+where                0.250                0.167                0.000                0.000                0.200               
+where(no OP)         0.250                0.167                0.000                0.000                0.200               
+group(no Having)     0.000                0.000                0.000                0.000                0.000               
+group                0.000                0.000                0.000                0.000                0.000               
+order                0.000                0.000                0.000                0.000                0.000               
+and/or               1.000                0.667                0.000                0.000                0.800               
+IUEN                 0.000                0.000                0.000                0.000                0.000               
+keywords             0.750                0.833                0.000                0.000                0.800               
+---------------------- PARTIAL MATCHING RECALL ----------------------
+select               0.750                0.333                0.000                0.000                0.500               
+select(no AGG)       0.750                0.333                0.000                0.000                0.500               
+where                0.250                0.167                0.000                0.000                0.200               
+where(no OP)         0.250                0.167                0.000                0.000                0.200               
+group(no Having)     0.000                0.000                0.000                0.000                0.000               
+group                0.000                0.000                0.000                0.000                0.000               
+order                0.000                0.000                0.000                0.000                0.000               
+and/or               1.000                1.000                0.000                0.000                1.000               
+IUEN                 0.000                0.000                0.000                0.000                0.000               
+keywords             0.750                0.833                0.000                0.000                0.800               
+---------------------- PARTIAL MATCHING F1 --------------------------
+select               0.750                0.333                0.000                0.000                0.500               
+select(no AGG)       0.750                0.333                0.000                0.000                0.500               
+where                0.250                0.167                0.000                0.000                0.200               
+where(no OP)         0.250                0.167                0.000                0.000                0.200               
+group(no Having)     1.000                1.000                0.000                0.000                1.000               
+group                1.000                1.000                0.000                0.000                1.000               
+order                1.000                1.000                0.000                0.000                1.000               
+and/or               1.000                0.800                0.000                0.000                0.889               
+IUEN                 1.000                1.000                0.000                0.000                1.000               
+keywords             0.750                0.833                0.000                0.000                0.800               
