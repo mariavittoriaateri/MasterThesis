@@ -3,8 +3,17 @@ from sqlparse.sql import Identifier, Token, Where, Comparison, Parenthesis, Func
 from sqlparse.tokens import Keyword, DML, Name, Punctuation
 from collections import Counter
 
+# Define constants for various SQL components
+CLAUSE_KEYWORDS = {'SELECT', 'FROM', 'WHERE', 'GROUP', 'ORDER BY', 'LIMIT', 'INTERSECT', 'UNION', 'EXCEPT'}
+JOIN_KEYWORDS = {'JOIN', 'ON', 'AS'}
 AGGREGATE_FUNCTIONS = {'AVG', 'COUNT', 'DISTINCT', 'MAX', 'MIN', 'SUM'}
 LOGICAL_OPERATORS = {'ALL', 'AND', 'NOT', 'IN', 'NOT IN', 'ANY', 'BETWEEN', 'OR', 'EXISTS', 'LIKE', 'SOME', '=', '>', '<'}
+WHERE_OPS = {'NOT', 'BETWEEN', '=', '>', '<', '>=', '<=', '!=', 'IN', 'LIKE', 'IS', 'EXISTS'}
+UNIT_OPS = {'NONE', '-', '+', '*', '/'}
+AGG_OPS = {'NONE', 'MAX', 'MIN', 'COUNT', 'SUM', 'AVG'}
+COND_OPS = {'AND', 'OR'}
+SQL_OPS = {'INTERSECT', 'UNION', 'EXCEPT'}
+ORDER_OPS = {'DESC', 'ASC'}
 
 def extract_clause_components(query):
     """
@@ -72,7 +81,7 @@ def extract_clause_components(query):
                 where_operators.add(sub_token.value.upper())
 
     for token in stmt.tokens:
-        if token.ttype in {Keyword, DML}:
+        if token.ttype in {Keyword, DML} and token.value.upper() in CLAUSE_KEYWORDS.union(JOIN_KEYWORDS):
             keywords.add(token.value.upper())
         elif isinstance(token, Where):
             # Capture arguments within the WHERE clause
@@ -182,3 +191,4 @@ if __name__ == "__main__":
     gold_file = 'gold_queries.sql'
     predicted_file = 'predicted_queries.sql'
     evaluate_similarity(gold_file, predicted_file)
+
