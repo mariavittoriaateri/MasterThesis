@@ -1,0 +1,29 @@
+Error executing query: SELECT prosody_nodes.word FROM prosody_nodes, prosody_nodes WHERE prosody_graph.filesequence = 1 AND syntax_terminal_nodes.word = 3;
+Error message: ambiguous column name: prosody_nodes.word
+
+Results for query: SELECT COUNT( * ) FROM prosody_nodes WHERE prosody_nodes.word LIKE '%3%';
+(145,)
+
+Results for query: SELECT prosody_nodes.word FROM prosody_nodes WHERE prosody_nodes.ts = 3;
+Nothing returned
+
+Error executing query: SELECT syntax_terminal_nodes.pos FROM prosody_nodes WHERE prosody_nodes.word = 3;
+Error message: no such column: syntax_terminal_nodes.pos
+
+Results for query: SELECT prosody_graph.graph_id FROM prosody_graph WHERE prosody_graph.filesequence = 3;
+Nothing returned
+
+Error executing query: SELECT prosody_nodes.word FROM prosody_nodes WHERE closure.closure_name = 'dlf-nachrichten-200703262000';
+Error message: no such column: closure.closure_name
+
+Error executing query: SELECT is_target_syn_root.is_label FROM node WHERE node.node_id = 900514;
+Error message: no such column: is_target_syn_root.is_label
+
+Results for query: SELECT node.node_type FROM node WHERE node.node_id = 900620;
+(145,)
+
+Results for query: SELECT edge.edge_type FROM edge WHERE edge.source_id = 56666 AND edge.target_graph = 56690;
+Nothing returned
+
+Error executing query: SELECT graph_type_definition.name FROM graph_type_definition JOIN node ON graph_type_definition.graph_type_def_id = node.node_type WHERE syntax_nonterminal_nodes.tiger_node_id = 'tigerXML_node';
+Error message: no such column: syntax_nonterminal_nodes.tiger_node_id
