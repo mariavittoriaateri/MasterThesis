@@ -8,7 +8,7 @@ Given the simplified and smaller version of the DIRNDL database, created by me a
 2. Store `dirndl.sql` and `dirndl.sqlite` (available at the link above) in `spider/preprocess/database/dirndl`
 3. Generate the `tables.json` file for the dirndl database with the `get_tables.py` script. This script reads sqlite files from the `database/` directory and previous `tables.json` with hand-corrected names. This means that the keys of the dictionary which will be populated by the script with the values from DIRNDL must be already specified in the pre-existing `tables.json` file. The command to be run is:
     ```sh
-    python process/get_tables.py [directory including many subdirectories containing database.sqlite files] [output file name e.g. output.json] [existing tables.json file to be inherited]
+    python process/get_tables.py {directory including many subdirectories containing database.sqlite files} {output file name e.g. output.json} {existing tables.json file to be inherited}
     ```
     After running this, `output.json` will contain the dictionary with the corresponding DIRNDL description, which can be added as new instance into the pre-existing `tables.json` file.
 4. Obtain development instances for DIRNDL with the `parse_sql_one.py` script. Given a NL question, the golden SQL query, and the golden information output, as outlined for instance in Table 3 in Section 8.1 of my thesis work, one should specify (in the main method of the script) the golden SQL query, the id of the database (“dirndl” in this case), and the table file (`tables.json`). By running the following command:
