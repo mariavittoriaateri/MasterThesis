@@ -94,7 +94,12 @@ The gold and predicted files resulting from SmBop in Experiment 1 are found at `
 
 The results of the evaluation script are found at `./dirndl_eval_exp1_irnet.yml` and `./dirndl_eval_exp1_smbop.yml`.
 
-In order to see the information retrieval resulting from the execution of the queries, the `./sqlexecution.py` script must be run. The results for Experiment 1 are found at `./sqlexecution_output_exp1_irnet.yml` and `./sqlexecution_output_exp1_smbop.yml`. (STATE ARGUMENTS TAKEN BY SCRIPT)
+In order to see the information retrieval resulting from the execution of the queries, the `./sqlexecution.py` script must be run. The results for Experiment 1 are found at `./sqlexecution_output_exp1_irnet.yml` and `./sqlexecution_output_exp1_smbop.yml`. The command to be run is:
+
+```sh
+python sqlexecution.py {path to the sqlite database} {path to the file with predicted queries} {output file}
+```
+
 Note: Query 4 from the IRNet predicted queries is excluded when running `sqlexecution.py` because it generates a bug in the system which blocks it.
 
 ## Citations
