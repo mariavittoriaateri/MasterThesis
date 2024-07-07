@@ -34,7 +34,7 @@ The steps outlined at point 1 allow to obtain DIRNDL instances in the tables.jso
 * Run `eval.sh` to generate the predictions. More specifically, this script produces a file named e.g. `output` with the SQL queries predicted by the system given the NL questions contained in the `dev.json` file, and a `gold.txt` file with the golden queries, extrapolated from the `dev.json` file. 
 ```sh
 eval.sh [GPU_ID] [OUTPUT_FOLD]`
-
+```
 
 ## 3. Generating predicted queries from SmBop
 
