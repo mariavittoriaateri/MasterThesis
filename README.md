@@ -77,7 +77,7 @@ Please note the following when passing the arguments:
 
 The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` and must be present together when copied in other directories (in this case in the IRNet and in the SmBop directories) since `evaluation.py` inherits some modules from `process_sql.py`.
 
-The results of the official Spider evaluation script based on Experiment 1 are found at `./official_evaluation_irnet_exp1.yml` and `./official_evaluation_smbop_exp1.yml`
+The results of the official Spider evaluation script based on Experiment 1 are found at `./Exp1/official_eval_exp1_output_irnet.yml` and `./Exp1/official_eval_exp1_output_smbop.yml`
 
 ### B) Custom Evaluation script
 
@@ -90,12 +90,12 @@ In the `main` method, two file paths must be specified:
 - `gold_file` must correspond to a `gold_queries.sql` file where each line is a gold SQL.
 - `predicted_file` must correspond to a `predicted_queries.sql` file where each line is a predicted SQL.
 
-The gold and predicted files resulting from IRNet in Experiment 1 are found at `./gold_queries_irnet_exp1.sql` and `./pred_queries_irnet_exp1.sql`.
-The gold and predicted files resulting from SmBop in Experiment 1 are found at `./gold_queries_smbop_exp1.sql` and `./pred_queries_smbop_exp1.sql`.
+The gold and predicted files resulting from IRNet in Experiment 1 are found at `./Exp1/gold_queries_irnet_exp1.sql` and `./Exp1/pred_queries_irnet_exp1.sql`.
+The gold and predicted files resulting from SmBop in Experiment 1 are found at `./Exp1/gold_queries_smbop_exp1.sql` and `./Exp1/pred_queries_smbop_exp1.sql`.
 
-The results of the evaluation script are found at `./dirndl_eval_exp1_irnet.yml` and `./dirndl_eval_exp1_smbop.yml`.
+The results of the evaluation script are found at `./Exp1/dirndl_eval_exp1_irnet.yml` and `./Exp1/dirndl_eval_exp1_smbop.yml`.
 
-In order to see the information retrieval resulting from the execution of the queries, the `./sqlexecution.py` script must be run. The results for Experiment 1 are found at `./sqlexecution_output_exp1_irnet.yml` and `./sqlexecution_output_exp1_smbop.yml`. The command to be run is:
+In order to see the information retrieval resulting from the execution of the queries, the `./sqlexecution.py` script must be run. The results for Experiment 1 are found at `./Exp1/sqlexecution_output_exp1_irnet.yml` and `./Exp1/sqlexecution_output_exp1_smbop.yml`. The command to be run is:
 
 ```sh
 python sqlexecution.py {path to the sqlite database} {path to the file with predicted queries} {output file}
