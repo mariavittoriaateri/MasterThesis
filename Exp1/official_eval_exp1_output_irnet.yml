@@ -1,5 +1,5 @@
 # This file contains the output of the official Spider evaluation script based on the gold-predicted SQL pairs of IRNet for Experiment 1.
-# The evaluation metrics is "match" (exact matching score) and not "exec" (execution score) because the system breaks when processing the execution of the fourth predicted query.
+# The evaluation metrics is "match" (exact matching score) and not "exec" (execution score) or "all" because the system breaks when processing the execution of the fourth predicted query.
 
 medium pred: SELECT T1.word FROM prosody_nodes AS T1 JOIN node AS T3 JOIN is_target_syn_root AS T2 WHERE T2.is_label like 1
 medium gold: SELECT word FROM syntax_terminal_nodes WHERE s_num = 3 AND seq = 1
