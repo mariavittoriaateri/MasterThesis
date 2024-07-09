@@ -77,7 +77,7 @@ Please note the following when passing the arguments:
 
 The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` and must be present together when copied in other directories (in this case in the IRNet and in the SmBop directories) since `evaluation.py` inherits some modules from `process_sql.py`.
 
-### B) Custom Evaluation script
+### B) Custom evaluation script
 
 Another way to evaluate the results is by using the tailor-made evaluation script, to be found at `./dirndl_evaluation.py`. This one allows for a more fine-grained analysis of the similarity between the predicted and the gold queries, based both on full-word and n-gram overlaps.
 ```sh
