@@ -1,34 +1,33 @@
-
 Query 1 similarity:
-  Keyword similarity: 0.60
-  Keyword n-gram overlap: 0.82
-  Argument similarity: 0.67
-  Argument n-gram overlap: 0.68
-    Gold keywords: {'SELECT', 'FROM', 'WHERE'}
-    Predicted keywords: {'FROM', 'JOIN', 'WHERE', 'ON', 'SELECT'}
+  Keyword similarity: 0.50
+  Keyword n-gram overlap: 0.53
+  Argument similarity: 0.40
+  Argument n-gram overlap: 0.32
+    Gold keywords: {'FROM', 'WHERE', 'SELECT'}
+    Predicted keywords: {'WHERE', 'SELECT', 'ON', 'GROUP BY', 'JOIN', 'FROM'}
     Gold arguments: {'syntax_terminal_nodes', 'word'}
-    Predicted arguments: {'syntax_terminal_nodes', 'syntax_graph', 'word'}
+    Predicted arguments: {'syntax_terminal_graph_id', 'syntax_graph', 'sentence_number', 'syntax_terminal_nodes', 'word'}
   WHERE clause component similarities:
-    Column similarity: 1.00
-    Column n-gram overlap: 1.00
+    Column similarity: 0.50
+    Column n-gram overlap: 0.62
     Operator similarity: 0.50
     Operator n-gram overlap: 0.00
-    Value similarity: 1.00
+    Value similarity: 0.50
     Value n-gram overlap: 0.00
-      Gold WHERE columns: {'sentence_number'}
+      Gold WHERE columns: {'`sequence`', 'sentence_number'}
       Predicted WHERE columns: {'sentence_number'}
       Gold WHERE operators: {'AND', '='}
       Predicted WHERE operators: {'='}
-      Gold WHERE values: {'3'}
+      Gold WHERE values: {'1', '3'}
       Predicted WHERE values: {'3'}
 Query 2 similarity:
   Keyword similarity: 0.60
   Keyword n-gram overlap: 0.69
   Argument similarity: 0.00
-  Argument n-gram overlap: 0.21
-    Gold keywords: {'SELECT', 'MAX', 'FROM', 'WHERE'}
-    Predicted keywords: {'SELECT', 'COUNT', 'FROM', 'WHERE'}
-    Gold arguments: {'syntax_terminal_nodes'}
+  Argument n-gram overlap: 0.16
+    Gold keywords: {'FROM', 'MAX', 'WHERE', 'SELECT'}
+    Predicted keywords: {'FROM', 'WHERE', 'SELECT', 'COUNT'}
+    Gold arguments: {'syntax_terminal_nodes', '`sequence`'}
     Predicted arguments: {'syntax_graph'}
   WHERE clause component similarities:
     Column similarity: 1.00
@@ -46,12 +45,12 @@ Query 2 similarity:
 Query 3 similarity:
   Keyword similarity: 0.75
   Keyword n-gram overlap: 0.60
-  Argument similarity: 1.00
-  Argument n-gram overlap: 1.00
-    Gold keywords: {'SELECT', 'FROM', 'WHERE', 'ORDER BY'}
-    Predicted keywords: {'SELECT', 'FROM', 'WHERE'}
-    Gold arguments: {'pos', 'syntax_terminal_nodes'}
-    Predicted arguments: {'pos', 'syntax_terminal_nodes'}
+  Argument similarity: 0.67
+  Argument n-gram overlap: 0.71
+    Gold keywords: {'FROM', 'WHERE', 'SELECT', 'ORDER BY'}
+    Predicted keywords: {'FROM', 'WHERE', 'SELECT'}
+    Gold arguments: {'syntax_terminal_nodes', 'pos', '`sequence`'}
+    Predicted arguments: {'syntax_terminal_nodes', 'pos'}
   WHERE clause component similarities:
     Column similarity: 0.00
     Column n-gram overlap: 0.00
@@ -70,32 +69,32 @@ Query 4 similarity:
   Keyword n-gram overlap: 1.00
   Argument similarity: 1.00
   Argument n-gram overlap: 1.00
-    Gold keywords: {'SELECT', 'FROM', 'WHERE'}
-    Predicted keywords: {'SELECT', 'FROM', 'WHERE'}
-    Gold arguments: {'pos', 'syntax_terminal_nodes'}
-    Predicted arguments: {'pos', 'syntax_terminal_nodes'}
+    Gold keywords: {'FROM', 'WHERE', 'SELECT'}
+    Predicted keywords: {'FROM', 'WHERE', 'SELECT'}
+    Gold arguments: {'syntax_terminal_nodes', 'pos'}
+    Predicted arguments: {'syntax_terminal_nodes', 'pos'}
   WHERE clause component similarities:
     Column similarity: 0.00
     Column n-gram overlap: 0.00
     Operator similarity: 0.50
     Operator n-gram overlap: 0.00
-    Value similarity: 1.00
+    Value similarity: 0.50
     Value n-gram overlap: 0.00
-      Gold WHERE columns: {'sentence_number'}
+      Gold WHERE columns: {'`sequence`', 'sentence_number'}
       Predicted WHERE columns: {'word'}
       Gold WHERE operators: {'AND', '='}
       Predicted WHERE operators: {'='}
-      Gold WHERE values: {'3'}
+      Gold WHERE values: {'1', '3'}
       Predicted WHERE values: {'3'}
 Query 5 similarity:
   Keyword similarity: 0.60
   Keyword n-gram overlap: 0.82
   Argument similarity: 0.00
-  Argument n-gram overlap: 0.26
-    Gold keywords: {'SELECT', 'FROM', 'WHERE'}
-    Predicted keywords: {'FROM', 'JOIN', 'WHERE', 'ON', 'SELECT'}
+  Argument n-gram overlap: 0.24
+    Gold keywords: {'FROM', 'WHERE', 'SELECT'}
+    Predicted keywords: {'WHERE', 'SELECT', 'ON', 'JOIN', 'FROM'}
     Gold arguments: {'syntax_graph_id', 'syntax_graph'}
-    Predicted arguments: {'syntax_nonterminal_nodes', 'node', 'graph_id'}
+    Predicted arguments: {'syntax_nonterminal_node_id', 'node_id', 'syntax_nonterminal_nodes', 'node', 'graph_id'}
   WHERE clause component similarities:
     Column similarity: 1.00
     Column n-gram overlap: 1.00
@@ -114,10 +113,10 @@ Query 6 similarity:
   Keyword n-gram overlap: 0.69
   Argument similarity: 0.33
   Argument n-gram overlap: 0.61
-    Gold keywords: {'SELECT', 'FROM', 'WHERE'}
-    Predicted keywords: {'SELECT', 'FROM', 'EXCEPT', 'WHERE'}
+    Gold keywords: {'FROM', 'WHERE', 'SELECT'}
+    Predicted keywords: {'FROM', 'WHERE', 'SELECT', 'EXCEPT'}
     Gold arguments: {'prosody_nodes', 'word'}
-    Predicted arguments: {'accents', 'prosody_nodes'}
+    Predicted arguments: {'prosody_nodes', 'accents'}
   WHERE clause component similarities:
     Column similarity: 1.00
     Column n-gram overlap: 1.00
@@ -125,21 +124,21 @@ Query 6 similarity:
     Operator n-gram overlap: 0.00
     Value similarity: 0.50
     Value n-gram overlap: 0.93
-      Gold WHERE columns: {'tone', 'file_sequence'}
-      Predicted WHERE columns: {'tone', 'file_sequence'}
+      Gold WHERE columns: {'file_sequence', 'tone'}
+      Predicted WHERE columns: {'file_sequence', 'tone'}
       Gold WHERE operators: {'AND', '='}
       Predicted WHERE operators: {'='}
-      Gold WHERE values: {"'dlf-nachrichten-200703262000'", "'NONE'"}
+      Gold WHERE values: {"'NONE'", "'dlf-nachrichten-200703262000'"}
       Predicted WHERE values: {"'dlf-nachrichten-200703262000'"}
 Query 7 similarity:
   Keyword similarity: 0.60
   Keyword n-gram overlap: 0.82
-  Argument similarity: 0.67
-  Argument n-gram overlap: 0.95
-    Gold keywords: {'SELECT', 'FROM', 'WHERE'}
-    Predicted keywords: {'FROM', 'JOIN', 'WHERE', 'ON', 'SELECT'}
-    Gold arguments: {'info_status_label', 'info_status_target_syn_root'}
-    Predicted arguments: {'node', 'info_status_label', 'info_status_target_syn_root'}
+  Argument similarity: 0.40
+  Argument n-gram overlap: 0.69
+    Gold keywords: {'FROM', 'WHERE', 'SELECT'}
+    Predicted keywords: {'WHERE', 'SELECT', 'ON', 'JOIN', 'FROM'}
+    Gold arguments: {'info_status_target_syn_root', 'info_status_label'}
+    Predicted arguments: {'info_status_label', 'syn_graph_id', 'node', 'graph_id', 'info_status_target_syn_root'}
   WHERE clause component similarities:
     Column similarity: 0.00
     Column n-gram overlap: 0.08
@@ -158,16 +157,16 @@ Query 8 similarity:
   Keyword n-gram overlap: 1.00
   Argument similarity: 1.00
   Argument n-gram overlap: 1.00
-    Gold keywords: {'SELECT', 'FROM', 'WHERE'}
-    Predicted keywords: {'SELECT', 'FROM', 'WHERE'}
-    Gold arguments: {'node_type', 'node_group', 'node'}
-    Predicted arguments: {'node_type', 'node_group', 'node'}
+    Gold keywords: {'FROM', 'WHERE', 'SELECT'}
+    Predicted keywords: {'FROM', 'WHERE', 'SELECT'}
+    Gold arguments: {'node_type', 'node', 'node_group'}
+    Predicted arguments: {'node_type', 'node', 'node_group'}
   WHERE clause component similarities:
     Column similarity: 1.00
     Column n-gram overlap: 1.00
     Operator similarity: 1.00
     Operator n-gram overlap: 0.00
-    Value similarity: 0.00
+    Value similarity: 1.00
     Value n-gram overlap: 1.00
       Gold WHERE columns: {'node_id'}
       Predicted WHERE columns: {'node_id'}
@@ -180,10 +179,10 @@ Query 9 similarity:
   Keyword n-gram overlap: 1.00
   Argument similarity: 1.00
   Argument n-gram overlap: 1.00
-    Gold keywords: {'SELECT', 'FROM', 'WHERE'}
-    Predicted keywords: {'SELECT', 'FROM', 'WHERE'}
-    Gold arguments: {'edge_group', 'edge'}
-    Predicted arguments: {'edge_group', 'edge'}
+    Gold keywords: {'FROM', 'WHERE', 'SELECT'}
+    Predicted keywords: {'FROM', 'WHERE', 'SELECT'}
+    Gold arguments: {'edge', 'edge_group'}
+    Predicted arguments: {'edge', 'edge_group'}
   WHERE clause component similarities:
     Column similarity: 0.25
     Column n-gram overlap: 0.45
@@ -191,8 +190,8 @@ Query 9 similarity:
     Operator n-gram overlap: 1.00
     Value similarity: 0.67
     Value n-gram overlap: 0.75
-      Gold WHERE columns: {'source_node', 'target_node', 'source_graph'}
-      Predicted WHERE columns: {'source_graph', 'target_graph'}
+      Gold WHERE columns: {'target_node', 'source_node', 'source_graph'}
+      Predicted WHERE columns: {'target_graph', 'source_graph'}
       Gold WHERE operators: {'AND', '='}
       Predicted WHERE operators: {'AND', '='}
       Gold WHERE values: {'1349', '56690', '56666'}
@@ -200,12 +199,12 @@ Query 9 similarity:
 Query 10 similarity:
   Keyword similarity: 0.60
   Keyword n-gram overlap: 0.82
-  Argument similarity: 0.67
-  Argument n-gram overlap: 0.91
-    Gold keywords: {'SELECT', 'FROM', 'WHERE'}
-    Predicted keywords: {'FROM', 'JOIN', 'WHERE', 'ON', 'SELECT'}
+  Argument similarity: 0.40
+  Argument n-gram overlap: 0.47
+    Gold keywords: {'FROM', 'WHERE', 'SELECT'}
+    Predicted keywords: {'WHERE', 'SELECT', 'ON', 'JOIN', 'FROM'}
     Gold arguments: {'name', 'graph_type_definition'}
-    Predicted arguments: {'name', 'node', 'graph_type_definition'}
+    Predicted arguments: {'name', 'graph_type_def_id', 'graph_type_definition', 'node_type', 'node'}
   WHERE clause component similarities:
     Column similarity: 0.00
     Column n-gram overlap: 0.29
@@ -219,3 +218,4 @@ Query 10 similarity:
       Predicted WHERE operators: {'='}
       Gold WHERE values: {"'tigerXML_node'"}
       Predicted WHERE values: {"'tigerXML_node'"}
+
