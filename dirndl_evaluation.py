@@ -1,10 +1,10 @@
 import sqlparse
-from sqlparse.sql import Identifier, Token, Where, Comparison, Parenthesis, Function, IdentifierList
-from sqlparse.tokens import Keyword, DML, Name, Punctuation
+from sqlparse.sql import Identifier, Token, Where, Comparison, Parenthesis, Function, IdentifierList, Statement
+from sqlparse.tokens import Keyword, DML, Name, Punctuation, Whitespace
 from collections import Counter
 
 # Define constants for various SQL components
-CLAUSE_KEYWORDS = {'SELECT', 'FROM', 'WHERE', 'GROUP', 'ORDER BY', 'LIMIT', 'INTERSECT', 'UNION', 'EXCEPT'}
+CLAUSE_KEYWORDS = {'SELECT', 'FROM', 'WHERE', 'GROUP BY', 'ORDER BY', 'LIMIT', 'INTERSECT', 'UNION', 'EXCEPT'}
 JOIN_KEYWORDS = {'JOIN', 'ON', 'AS'}
 AGGREGATE_FUNCTIONS = {'AVG', 'COUNT', 'DISTINCT', 'MAX', 'MIN', 'SUM'}
 LOGICAL_OPERATORS = {'ALL', 'AND', 'NOT', 'IN', 'NOT IN', 'ANY', 'BETWEEN', 'OR', 'EXISTS', 'LIKE', 'SOME', '=', '>', '<'}
@@ -30,7 +30,7 @@ def extract_clause_components(query):
     where_operators = set()
     where_values = set()
     nested_query_present = False
-    
+
     def extract_function_arguments(token):
         """
         Extract arguments within SQL functions like MAX and COUNT.
@@ -72,13 +72,71 @@ def extract_clause_components(query):
                 if isinstance(right, Token):
                     where_values.add(right.value)
             elif sub_token.ttype == Keyword and sub_token.value.upper() == 'NOT':
-                if sub_token.token_next(1).value.upper() == 'IN':
+                if sub_token.token_next(1)[1].value.upper() == 'IN':
                     where_operators.add('NOT IN')
             elif isinstance(sub_token, Parenthesis):
                 # Check for nested SELECT statements
                 nested_query_present = any(isinstance(t, Where) for t in sub_token.tokens)
             elif sub_token.ttype in {Keyword, Punctuation} and sub_token.value.upper() in LOGICAL_OPERATORS:
                 where_operators.add(sub_token.value.upper())
+    
+    def extract_group_by_clause(stmt):
+        """
+        Extract components from the GROUP BY clause.
+        """
+        group_by_keywords = {'GROUP BY'}
+        for token in stmt.tokens:
+            if token.ttype in {Keyword} and token.value.upper() in group_by_keywords:
+                keywords.add('GROUP BY')
+                _, next_token = stmt.token_next(stmt.token_index(token))
+                if isinstance(next_token, IdentifierList):
+                    for identifier in next_token.get_identifiers():
+                        arguments.add(normalize_column(identifier.get_real_name()))
+                elif isinstance(next_token, Identifier):
+                    arguments.add(normalize_column(next_token.get_real_name()))
+                    
+    def extract_join_clause(stmt):
+        """
+        Extract components from the JOIN clause.
+        """
+        join_keywords = {'JOIN', 'ON'}
+        for token in stmt.tokens:
+            if token.ttype in {Keyword} and token.value.upper() in join_keywords:
+                keywords.add(token.value.upper())
+                _, next_token = stmt.token_next(stmt.token_index(token))
+                if isinstance(next_token, IdentifierList):
+                    for identifier in next_token.get_identifiers():
+                        arguments.add(normalize_column(identifier.get_real_name()))
+                elif isinstance(next_token, Identifier):
+                    arguments.add(normalize_column(next_token.get_real_name()))
+                # Capture the columns used in the ON clause
+                if token.value.upper() == 'ON':
+                    if isinstance(next_token, Comparison):
+                        left, right = next_token.left, next_token.right
+                        if isinstance(left, Identifier):
+                            arguments.add(normalize_column(left.get_real_name()))
+                        if isinstance(right, Identifier):
+                            arguments.add(normalize_column(right.get_real_name()))
+                    
+    def extract_exceptions(stmt):
+        """
+        Extract components from the EXCEPT clause.
+        """
+        exception_keywords = {'EXCEPT'}
+        for token in stmt.tokens:
+            if token.ttype in {Keyword} and token.value.upper() in exception_keywords:
+                keywords.add('EXCEPT')
+                _, next_token = stmt.token_next(stmt.token_index(token))
+                if isinstance(next_token, Parenthesis):
+                    for sub_token in next_token.tokens:
+                        if isinstance(sub_token, Statement):
+                            nested_keywords, nested_arguments, nested_where_columns, nested_where_operators, nested_where_values, nested_nested_query = extract_clause_components(sub_token.value)
+                            keywords.update(nested_keywords)
+                            arguments.update(nested_arguments)
+                            where_columns.update(nested_where_columns)
+                            where_operators.update(nested_where_operators)
+                            where_values.update(nested_where_values)
+                            nested_query_present = nested_query_present or nested_nested_query
 
     for token in stmt.tokens:
         if token.ttype in {Keyword, DML} and token.value.upper() in CLAUSE_KEYWORDS.union(JOIN_KEYWORDS):
@@ -87,19 +145,40 @@ def extract_clause_components(query):
             # Capture arguments within the WHERE clause
             extract_where_clause(token)
         elif isinstance(token, Identifier) or token.ttype in (Name,):
-            arguments.add(normalize_column(token.get_real_name()))
+            normalized_token = normalize_column(token.get_real_name())
+            arguments.add(normalized_token)
         elif isinstance(token, IdentifierList):
             for identifier in token.get_identifiers():
-                arguments.add(normalize_column(identifier.get_real_name()))
+                normalized_identifier = normalize_column(identifier.get_real_name())
+                arguments.add(normalized_identifier)
         elif isinstance(token, Function):
             extract_function_arguments(token)
+    
+    # Extract additional clauses
+    extract_group_by_clause(stmt)
+    extract_join_clause(stmt)
+    extract_exceptions(stmt)
 
     return keywords, arguments, where_columns, where_operators, where_values, nested_query_present
+
+def normalize_values(set1, set2):
+    """
+    Normalizes values by removing single and double quotes.
+    """
+    def remove_quotes(value):
+        return value.replace("'", "").replace('"', "")
+    
+    normalized_set1 = {remove_quotes(item) for item in set1}
+    normalized_set2 = {remove_quotes(item) for item in set2}
+    
+    return normalized_set1, normalized_set2
 
 def calculate_similarity(set1, set2):
     """
     Calculates similarity between two sets as the ratio of the intersection to the union.
     """
+    set1, set2 = normalize_values(set1, set2)
+    
     if not set1 and not set2:
         return 1.0  # Both sets are empty, consider them as identical
 
@@ -112,11 +191,12 @@ def calculate_ngram_overlap(set1, set2, n=3):
     """
     Calculates n-gram overlap between two sets.
     """
+    set1, set2 = normalize_values(set1, set2)
+    
     if not set1 and not set2:
         return 1.0  # Both sets are empty, consider them as identical
 
     def get_ngrams(s, n):
-        s = s.replace("'", "")  # Remove single quotes for n-gram calculation
         return [s[i:i+n] for i in range(len(s)-n+1)]
 
     set1_ngrams = Counter()
