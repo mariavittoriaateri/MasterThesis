@@ -218,4 +218,3 @@ Query 10 similarity:
       Predicted WHERE operators: {'='}
       Gold WHERE values: {"'tigerXML_node'"}
       Predicted WHERE values: {'1'}
-
