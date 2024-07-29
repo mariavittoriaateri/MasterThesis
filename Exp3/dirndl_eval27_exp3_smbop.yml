@@ -1,0 +1,104 @@
+Query 1 similarity:
+  Keyword similarity: 0.83
+  Keyword n-gram overlap: 0.61
+  Argument similarity: 0.21
+  Argument n-gram overlap: 0.23
+  Operator similarity: 0.50
+  Operator n-gram overlap: 0.00
+    Gold keywords: {'WHERE', 'JOIN', 'ON', 'SELECT', 'FROM'}
+    Predicted keywords: {'INTERSECT', 'WHERE', 'JOIN', 'ON', 'SELECT', 'FROM'}
+    Gold arguments: {'graph_id', 'prosody_nodes', 'accents', 'syntax_terminal_nodes', 'word', 'source_id', 'node_id', 'target_id', 'target_graph', 'ts', 'source_graph', 'tone', 'edge'}
+    Predicted arguments: {'node_id', 'prosody_nodes', 'word', 'node'}
+    Gold operators: {'AND', '='}
+    Predicted operators: {'='}
+  WHERE clause component similarities:
+    Column similarity: 0.00
+    Column n-gram overlap: 0.00
+    Operator similarity: 1.00
+    Operator n-gram overlap: 0.00
+    Value similarity: 0.00
+    Value n-gram overlap: 0.00
+      Gold WHERE columns: {'grp'}
+      Predicted WHERE columns: {'node_type', 'node_id'}
+      Gold WHERE operators: {'='}
+      Predicted WHERE operators: {'='}
+      Gold WHERE values: {'link_edge'}
+      Predicted WHERE values: {'syntactic leaf', 'node.node_id'}
+Query 2 similarity:
+  Keyword similarity: 0.50
+  Keyword n-gram overlap: 0.53
+  Argument similarity: 0.07
+  Argument n-gram overlap: 0.10
+  Operator similarity: 0.00
+  Operator n-gram overlap: 0.00
+    Gold keywords: {'WHERE', 'JOIN', 'ON', 'SELECT', 'ORDER BY', 'FROM'}
+    Predicted keywords: {'FROM', 'WHERE', 'SELECT'}
+    Gold arguments: {'sentences', 'sentence_array', 'graph_id', 'tone', 'terminal_and_prosody', 'word', 's_num', 'seq', 'node_id', 'pos', 'sentence_length', 'ts', 'accents', 'filesequence'}
+    Predicted arguments: {'prosody_nodes', 'word'}
+    Gold operators: {'='}
+    Predicted operators: None
+  WHERE clause component similarities:
+    Column similarity: 0.00
+    Column n-gram overlap: 0.00
+    Operator similarity: 0.33
+    Operator n-gram overlap: 0.67
+    Value similarity: 0.00
+    Value n-gram overlap: 0.00
+      Gold WHERE columns: {'accents', 'tone'}
+      Predicted WHERE columns: {'word'}
+      Gold WHERE operators: {'AND', '!=', 'LIKE'}
+      Predicted WHERE operators: {'LIKE'}
+      Gold WHERE values: {'|NONE|', '%\\\\%%'}
+      Predicted WHERE values: {'%nuclear%'}
+Query 3 similarity:
+  Keyword similarity: 0.50
+  Keyword n-gram overlap: 0.60
+  Argument similarity: 0.00
+  Argument n-gram overlap: 0.01
+  Operator similarity: 0.00
+  Operator n-gram overlap: 0.00
+    Gold keywords: {'EXCEPT', 'WHERE', 'JOIN', 'ON', 'SELECT', 'FROM'}
+    Predicted keywords: {'FROM', 'WHERE', 'SELECT'}
+    Gold arguments: {'graph_id', 'node_graph', 'syntax_terminal_nodes', 'subnode_id', 'node_id', 'closure', 'syntax_nonterminal_nodes'}
+    Predicted arguments: {'sentences', 'sentence_array'}
+    Gold operators: {'AND', '='}
+    Predicted operators: None
+  WHERE clause component similarities:
+    Column similarity: 0.00
+    Column n-gram overlap: 0.00
+    Operator similarity: 0.00
+    Operator n-gram overlap: 0.00
+    Value similarity: 0.00
+    Value n-gram overlap: 0.00
+      Gold WHERE columns: {'pos', 'cat'}
+      Predicted WHERE columns: {'sentence_length'}
+      Gold WHERE operators: {'LIKE'}
+      Predicted WHERE operators: {'<'}
+      Gold WHERE values: {'DP[%', 'A[%'}
+      Predicted WHERE values: {"(SELECT MAX( sentences.sentence_length ) FROM sentences WHERE sentences.sentence_length LIKE '%DPs%')"}
+Query 4 similarity:
+  Keyword similarity: 0.80
+  Keyword n-gram overlap: 0.73
+  Argument similarity: 0.20
+  Argument n-gram overlap: 0.29
+  Operator similarity: 0.50
+  Operator n-gram overlap: 0.00
+    Gold keywords: {'WHERE', 'JOIN', 'ON', 'SELECT', 'FROM'}
+    Predicted keywords: {'FROM', 'JOIN', 'ON', 'SELECT'}
+    Gold arguments: {'graph_id', 'prosody_nodes', 'accents', 'syntax_terminal_nodes', 'word', 'source_id', 'node_id', 'target_id', 'target_graph', 'ts', 'source_graph', 'tone', 'edge', 'filesequence'}
+    Predicted arguments: {'prosody_nodes', 'syntax_graph', 'graph_id', 'word'}
+    Gold operators: {'AND', '='}
+    Predicted operators: {'='}
+  WHERE clause component similarities:
+    Column similarity: 0.00
+    Column n-gram overlap: 0.00
+    Operator similarity: 0.00
+    Operator n-gram overlap: 0.00
+    Value similarity: 0.00
+    Value n-gram overlap: 0.00
+      Gold WHERE columns: {'grp'}
+      Predicted WHERE columns: set()
+      Gold WHERE operators: {'='}
+      Predicted WHERE operators: None
+      Gold WHERE values: {'link_edge'}
+      Predicted WHERE values: set()
