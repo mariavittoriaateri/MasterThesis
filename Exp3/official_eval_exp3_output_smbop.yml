@@ -1,0 +1,53 @@
+hard pred: SELECT node.node_id , prosody_nodes.word FROM prosody_nodes JOIN node ON prosody_nodes.node_id = node.node_id WHERE node.node_type = 'syntactic leaf' INTERSECT SELECT prosody_nodes.word FROM prosody_nodes JOIN node ON prosody_nodes.node_id = node.node_id WHERE node.node_type = 'syntactic leaf'
+hard gold: SELECT syntax_terminal_nodes.graph_id, syntax_terminal_nodes.node_id, prosody_nodes.ts, prosody_nodes.word, prosody_nodes.tone, prosody_nodes.accents FROM prosody_nodes JOIN edge ON prosody_nodes.graph_id = edge.source_graph AND prosody_nodes.node_id = edge.source_id JOIN syntax_terminal_nodes ON syntax_terminal_nodes.graph_id = edge.target_graph AND syntax_terminal_nodes.node_id = edge.target_id WHERE edge.grp = 'link_edge'
+
+extra pred: SELECT prosody_nodes.word FROM prosody_nodes WHERE prosody_nodes.word LIKE '%nuclear%'
+extra gold: SELECT graph_id, node_id, terminal_and_prosody.s_num, seq, pos, word, accents, tone, ts, filesequence, sentence_length, sentence_array FROM terminal_and_prosody JOIN sentences ON terminal_and_prosody.s_num = sentences.s_num WHERE accents != '|NONE|' AND tone LIKE '%\\%%' ORDER BY terminal_and_prosody.s_num
+
+extra pred: SELECT sentences.sentence_array FROM sentences WHERE sentences.sentence_length<(SELECT MAX( sentences.sentence_length ) FROM sentences WHERE sentences.sentence_length LIKE '%DPs%')
+extra gold: SELECT syntax_nonterminal_nodes.node_id, syntax_nonterminal_nodes.graph_id FROM syntax_nonterminal_nodes WHERE syntax_nonterminal_nodes.cat LIKE 'DP[%' EXCEPT SELECT closure.node_id, closure.node_graph FROM syntax_terminal_nodes JOIN closure ON closure.subnode_id = syntax_terminal_nodes.node_id AND closure.node_graph = syntax_terminal_nodes.graph_id WHERE syntax_terminal_nodes.pos LIKE 'A[%'
+
+hard pred: SELECT prosody_nodes.word FROM prosody_nodes JOIN syntax_graph ON prosody_nodes.graph_id = syntax_graph.graph_id
+hard gold: SELECT prosody_nodes.filesequence, prosody_nodes.graph_id, prosody_nodes.node_id, prosody_nodes.ts, prosody_nodes.word, prosody_nodes.tone, prosody_nodes.accents, syntax_terminal_nodes.graph_id, syntax_terminal_nodes.node_id FROM syntax_terminal_nodes JOIN edge ON syntax_terminal_nodes.graph_id = edge.target_graph AND syntax_terminal_nodes.node_id = edge.target_id JOIN prosody_nodes ON prosody_nodes.graph_id = edge.source_graph AND prosody_nodes.node_id = edge.source_id WHERE edge.grp = 'link_edge'
+
+                     easy                 medium               hard                 extra                all                 
+count                0                    0                    2                    2                    4                   
+=====================   EXECUTION ACCURACY     =====================
+execution            0.000                0.000                0.000                0.000                0.000               
+
+====================== EXACT MATCHING ACCURACY =====================
+exact match          0.000                0.000                0.000                0.000                0.000               
+
+---------------------PARTIAL MATCHING ACCURACY----------------------
+select               0.000                0.000                0.000                0.000                0.000               
+select(no AGG)       0.000                0.000                0.000                0.000                0.000               
+where                0.000                0.000                0.000                0.000                0.000               
+where(no OP)         0.000                0.000                0.000                0.000                0.000               
+group(no Having)     0.000                0.000                0.000                0.000                0.000               
+group                0.000                0.000                0.000                0.000                0.000               
+order                0.000                0.000                0.000                0.000                0.000               
+and/or               0.000                0.000                1.000                0.500                0.750               
+IUEN                 0.000                0.000                0.000                0.000                0.000               
+keywords             0.000                0.000                0.000                0.000                0.000               
+---------------------- PARTIAL MATCHING RECALL ----------------------
+select               0.000                0.000                0.000                0.000                0.000               
+select(no AGG)       0.000                0.000                0.000                0.000                0.000               
+where                0.000                0.000                0.000                0.000                0.000               
+where(no OP)         0.000                0.000                0.000                0.000                0.000               
+group(no Having)     0.000                0.000                0.000                0.000                0.000               
+group                0.000                0.000                0.000                0.000                0.000               
+order                0.000                0.000                0.000                0.000                0.000               
+and/or               0.000                0.000                1.000                1.000                1.000               
+IUEN                 0.000                0.000                0.000                0.000                0.000               
+keywords             0.000                0.000                0.000                0.000                0.000               
+---------------------- PARTIAL MATCHING F1 --------------------------
+select               0.000                0.000                1.000                1.000                1.000               
+select(no AGG)       0.000                0.000                1.000                1.000                1.000               
+where                0.000                0.000                1.000                1.000                1.000               
+where(no OP)         0.000                0.000                1.000                1.000                1.000               
+group(no Having)     0.000                0.000                1.000                1.000                1.000               
+group                0.000                0.000                1.000                1.000                1.000               
+order                0.000                0.000                1.000                1.000                1.000               
+and/or               0.000                0.000                1.000                0.667                0.857               
+IUEN                 0.000                0.000                1.000                1.000                1.000               
+keywords             0.000                0.000                1.000                1.000                1.000               
