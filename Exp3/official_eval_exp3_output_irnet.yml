@@ -1,0 +1,44 @@
+# Type of evaluation metrics: "match" (not "all")
+
+extra pred: SELECT T1.created FROM graph_type_definition AS T1 WHERE T1.graph_type_def_id NOT IN (SELECT T2.source_id FROM edge AS T2 JOIN node AS T4 JOIN prosody_nodes AS T3 WHERE T3.word like 1       )
+extra gold: SELECT syntax_nonterminal_nodes.node_id, syntax_nonterminal_nodes.graph_id FROM syntax_nonterminal_nodes WHERE syntax_nonterminal_nodes.cat LIKE 'DP[%' EXCEPT SELECT closure.node_id, closure.node_graph FROM syntax_terminal_nodes JOIN closure ON closure.subnode_id = syntax_terminal_nodes.node_id AND closure.node_graph = syntax_terminal_nodes.graph_id WHERE syntax_terminal_nodes.pos LIKE 'A[%'
+
+                     easy                 medium               hard                 extra                all                 
+count                0                    0                    0                    1                    1                   
+
+====================== EXACT MATCHING ACCURACY =====================
+exact match          0.000                0.000                0.000                0.000                0.000               
+
+---------------------PARTIAL MATCHING ACCURACY----------------------
+select               0.000                0.000                0.000                0.000                0.000               
+select(no AGG)       0.000                0.000                0.000                0.000                0.000               
+where                0.000                0.000                0.000                0.000                0.000               
+where(no OP)         0.000                0.000                0.000                0.000                0.000               
+group(no Having)     0.000                0.000                0.000                0.000                0.000               
+group                0.000                0.000                0.000                0.000                0.000               
+order                0.000                0.000                0.000                0.000                0.000               
+and/or               0.000                0.000                0.000                1.000                1.000               
+IUEN                 0.000                0.000                0.000                0.000                0.000               
+keywords             0.000                0.000                0.000                0.000                0.000               
+---------------------- PARTIAL MATCHING RECALL ----------------------
+select               0.000                0.000                0.000                0.000                0.000               
+select(no AGG)       0.000                0.000                0.000                0.000                0.000               
+where                0.000                0.000                0.000                0.000                0.000               
+where(no OP)         0.000                0.000                0.000                0.000                0.000               
+group(no Having)     0.000                0.000                0.000                0.000                0.000               
+group                0.000                0.000                0.000                0.000                0.000               
+order                0.000                0.000                0.000                0.000                0.000               
+and/or               0.000                0.000                0.000                1.000                1.000               
+IUEN                 0.000                0.000                0.000                0.000                0.000               
+keywords             0.000                0.000                0.000                0.000                0.000               
+---------------------- PARTIAL MATCHING F1 --------------------------
+select               0.000                0.000                0.000                1.000                1.000               
+select(no AGG)       0.000                0.000                0.000                1.000                1.000               
+where                0.000                0.000                0.000                1.000                1.000               
+where(no OP)         0.000                0.000                0.000                1.000                1.000               
+group(no Having)     0.000                0.000                0.000                1.000                1.000               
+group                0.000                0.000                0.000                1.000                1.000               
+order                0.000                0.000                0.000                1.000                1.000               
+and/or               0.000                0.000                0.000                1.000                1.000               
+IUEN                 0.000                0.000                0.000                1.000                1.000               
+keywords             0.000                0.000                0.000                1.000                1.000               
