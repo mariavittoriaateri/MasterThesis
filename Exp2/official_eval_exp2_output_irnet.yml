@@ -1,3 +1,5 @@
+# Type of evaluation metrics: "match" (not "all")
+
 medium pred: SELECT T1.sentence_number FROM syntax_terminal_nodes AS T1 JOIN node AS T3 JOIN prosody_nodes AS T2 WHERE T2.word = 1
 medium gold: SELECT word FROM syntax_terminal_nodes WHERE sentence_number = 3 AND sequence = 1
 
