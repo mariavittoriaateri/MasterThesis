@@ -1,0 +1,26 @@
+Query 1 similarity:
+  Keyword similarity: 0.50
+  Keyword n-gram overlap: 0.60
+  Argument similarity: 0.00
+  Argument n-gram overlap: 0.04
+  Operator similarity: 0.00
+  Operator n-gram overlap: 0.00
+    Gold keywords: {'SELECT', 'FROM', 'JOIN', 'EXCEPT', 'ON', 'WHERE'}
+    Predicted keywords: {'FROM', 'WHERE', 'SELECT'}
+    Gold arguments: {'closure', 'subnode_id', 'graph_id', 'syntax_terminal_nodes', 'node_graph', 'syntax_nonterminal_nodes', 'node_id'}
+    Predicted arguments: {'created', 'graph_type_definition'}
+    Gold operators: {'AND', '='}
+    Predicted operators: None
+  WHERE clause component similarities:
+    Column similarity: 0.00
+    Column n-gram overlap: 0.00
+    Operator similarity: 0.00
+    Operator n-gram overlap: 0.00
+    Value similarity: 0.00
+    Value n-gram overlap: 0.00
+      Gold WHERE columns: {'cat', 'pos'}
+      Predicted WHERE columns: {'graph_type_def_id'}
+      Gold WHERE operators: {'LIKE'}
+      Predicted WHERE operators: {'NOT IN'}
+      Gold WHERE values: {'DP[%', 'A[%'}
+      Predicted WHERE values: {'(SELECT T2.source_id FROM edge AS T2 JOIN node AS T4 JOIN prosody_nodes AS T3 WHERE T3.word like 1       )'}
