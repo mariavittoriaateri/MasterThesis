@@ -1,1 +1,1 @@
-
+SELECT syntax_nonterminal_nodes.node_id, syntax_nonterminal_nodes.graph_id FROM syntax_nonterminal_nodes WHERE syntax_nonterminal_nodes.cat LIKE 'DP[%' EXCEPT SELECT closure.node_id, closure.node_graph FROM syntax_terminal_nodes JOIN closure ON closure.subnode_id = syntax_terminal_nodes.node_id AND closure.node_graph = syntax_terminal_nodes.graph_id WHERE syntax_terminal_nodes.pos LIKE 'A[%'
