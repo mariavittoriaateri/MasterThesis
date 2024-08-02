@@ -30,7 +30,6 @@ To obtain the predictions from IRNet, first the IRNet system has to be set-up fo
 
 * Download [Glove Embedding](https://nlp.stanford.edu/data/wordvecs/glove.42B.300d.zip) and put `glove.42B.300d` under `./data/` directory
 * Download [Pretrained IRNet](https://drive.google.com/open?id=1VoV28fneYss8HaZmoThGlvYU3A-aK31q) and put `IRNet_pretrained.model` under `./saved_model/` directory
-* Download preprocessed train dataset from [here](https://drive.google.com/drive/folders/1reK5Lx7EgKV2ooR0cYOrBXOPUOId43lH?usp=drive_link) and put `train.json` under `./data/` directory
 
 The steps outlined at point 1 allow to obtain DIRNDL instances in the tables.json and the dev.json files as described by the authors of Spider. These two resulting files for Experiment 1 can be found [here](https://drive.google.com/drive/folders/1DAtm1dUvHx8-auFl2gHaRk_qAhRe4GR5?usp=drive_link). Nevertheless, the IRNet system uses a modified version of the original dev.json file, as described in Listing 5 of my thesis work. For this reason, before obtaining the predictions from the system, these preprocessing steps must be carried out:
 
