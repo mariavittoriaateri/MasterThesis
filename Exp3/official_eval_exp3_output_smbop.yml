@@ -1,3 +1,6 @@
+# This file contains the output of the official Spider evaluation script based on the gold-predicted SQL pairs of SmBop for Experiment 3.
+# The evaluation metrics is "all" (exact matching score) a
+
 hard pred: SELECT node.node_id , prosody_nodes.word FROM prosody_nodes JOIN node ON prosody_nodes.node_id = node.node_id WHERE node.node_type = 'syntactic leaf' INTERSECT SELECT prosody_nodes.word FROM prosody_nodes JOIN node ON prosody_nodes.node_id = node.node_id WHERE node.node_type = 'syntactic leaf'
 hard gold: SELECT syntax_terminal_nodes.graph_id, syntax_terminal_nodes.node_id, prosody_nodes.ts, prosody_nodes.word, prosody_nodes.tone, prosody_nodes.accents FROM prosody_nodes JOIN edge ON prosody_nodes.graph_id = edge.source_graph AND prosody_nodes.node_id = edge.source_id JOIN syntax_terminal_nodes ON syntax_terminal_nodes.graph_id = edge.target_graph AND syntax_terminal_nodes.node_id = edge.target_id WHERE edge.grp = 'link_edge'
 
