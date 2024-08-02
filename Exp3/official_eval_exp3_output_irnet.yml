@@ -1,4 +1,5 @@
-# Type of evaluation metrics: "match" (not "all")
+# This file contains the output of the official Spider evaluation script based on the gold-predicted SQL pairs of IRNet for Experiment 3 (only one pair in this case).
+# The evaluation metrics is "match" (exact matching score) and not "exec" (execution score) or "all" because the system breaks when processing the execution of the predicted query.
 
 extra pred: SELECT T1.created FROM graph_type_definition AS T1 WHERE T1.graph_type_def_id NOT IN (SELECT T2.source_id FROM edge AS T2 JOIN node AS T4 JOIN prosody_nodes AS T3 WHERE T3.word like 1       )
 extra gold: SELECT syntax_nonterminal_nodes.node_id, syntax_nonterminal_nodes.graph_id FROM syntax_nonterminal_nodes WHERE syntax_nonterminal_nodes.cat LIKE 'DP[%' EXCEPT SELECT closure.node_id, closure.node_graph FROM syntax_terminal_nodes JOIN closure ON closure.subnode_id = syntax_terminal_nodes.node_id AND closure.node_graph = syntax_terminal_nodes.graph_id WHERE syntax_terminal_nodes.pos LIKE 'A[%'
