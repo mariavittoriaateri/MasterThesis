@@ -126,6 +126,19 @@ The results of the custom evaluation script are found at `./Exp2/dirndl_eval_exp
 The results of the execution script are found at `./Exp2/sqlexecution_output_exp2_irnet.yml` and `./Exp2/sqlexecution_output_exp2_smbop.yml`. 
 Note: Queries 1, 3, 4, 5 from the IRNet predicted queries are excluded from the execution of `sqlexecution.py` because due to a system bug that causes blockage (most probably due to the query complexity and amount of data to be retrieved).
 
+#### Evaluation Exp3
+
+The results of the official Spider evaluation script based on Experiment 3 are found at `./Exp3/official_eval_exp3_output_irnet.yml` and `./Exp3/official_eval_exp3_output_smbop.yml`
+
+The gold and predicted files resulting from IRNet in Experiment 3 are found at `./Exp3/gold_queries_irnet_exp3.sql` and `./Exp2/pred_queries_irnet_exp3.sql`.
+
+The gold and predicted files resulting from SmBop in Experiment 3 are found at `./Exp3/gold_queries_smbop_exp3.sql` and `./Exp1/pred_queries_smbop_exp3.sql`.
+
+The results of the custom evaluation script are found at `./Exp3/dirndl_eval_exp3_output_irnet.yml` and `./Exp3/dirndl_eval_exp3_output_smbop.yml`.
+
+The results of the execution script are found at `./Exp3/sqlexecution_output_exp3_irnet.yml` and `./Exp3/sqlexecution_output_exp3_smbop.yml`. 
+Note: Queries XXXX are excluded....
+
 ## Citations
 
 ```markdown
