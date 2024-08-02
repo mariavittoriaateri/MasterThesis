@@ -111,7 +111,7 @@ The gold and predicted files resulting from SmBop in Experiment 1 are found at `
 The results of the custom evaluation script are found at `./Exp1/dirndl_eval_exp1_output_irnet.yml` and `./Exp1/dirndl_eval_exp1_output_smbop.yml`.
 
 The results of the execution script are found at `./Exp1/sqlexecution_output_exp1_irnet.yml` and `./Exp1/sqlexecution_output_exp1_smbop.yml`. 
-Note: Query 4 from the IRNet predicted queries is excluded when running `sqlexecution.py` because it generates a bug in the system which blocks it.
+Note: Query 4 from the IRNet predicted queries is excluded from the execution of `sqlexecution.py` because due to a system bug that causes blockage (most probably due to the query complexity and amount of data to be retrieved).
 
 #### Evaluation Exp2
 
@@ -124,7 +124,7 @@ The gold and predicted files resulting from SmBop in Experiment 2 are found at `
 The results of the custom evaluation script are found at `./Exp2/dirndl_eval_exp2_output_irnet.yml` and `./Exp2/dirndl_eval_exp2_output_smbop.yml`.
 
 The results of the execution script are found at `./Exp2/sqlexecution_output_exp2_irnet.yml` and `./Exp2/sqlexecution_output_exp2_smbop.yml`. 
-Note: Queries 1, 3, 4, 5 from the IRNet predicted queries are excluded when running `sqlexecution.py` because they generate a bug in the system which blocks it.
+Note: Queries 1, 3, 4, 5 from the IRNet predicted queries are excluded from the execution of `sqlexecution.py` because due to a system bug that causes blockage (most probably due to the query complexity and amount of data to be retrieved).
 
 ## Citations
 
