@@ -137,7 +137,7 @@ The gold and predicted files resulting from SmBop in Experiment 3 are found at `
 The results of the custom evaluation script are found at `./Exp3/dirndl_eval_exp3_output_irnet.yml` and `./Exp3/dirndl_eval_exp3_output_smbop.yml`.
 
 The results of the execution script are found at `./Exp3/sqlexecution_output_exp3_irnet.yml` and `./Exp3/sqlexecution_output_exp3_smbop.yml`. 
-Note: Queries XXXX are excluded....
+Note: The only one query produced by IRNet in this experiment causes blockage, hence no result is reported.
 
 ## Citations
 
