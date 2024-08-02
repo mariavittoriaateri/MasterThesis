@@ -83,7 +83,7 @@ The `evaluation.py` and `process_sql.py` scripts are to be found is `/spider` an
 
 ### B) Custom evaluation script
 
-Another way to evaluate the results is by using the tailor-made evaluation script, to be found at `./dirndl_evaluation.py`. This one allows for a more fine-grained analysis of the similarity between the predicted and the gold queries, based both on full-word and n-gram overlaps.
+Another way to evaluate the results is by using the custom evaluation script, to be found at `./dirndl_eval.py`. This one allows for a more fine-grained analysis of the similarity between the predicted and the gold queries, based both on full-word and n-gram overlaps.
 ```sh
 python dirndl_evaluation.py
 ```
