@@ -1,5 +1,5 @@
 # This file contains the output of the official Spider evaluation script based on the gold-predicted SQL pairs of SmBop for Experiment 1.
-# The evaluation metrics "all" (hence it displays both exact matching score and execution score).
+# The evaluation metrics is "all" (hence it displays both exact matching score and execution score).
 # The system outputs an error with the first predicted query because the FROM clause repeats 'prosody_nodes' twice. Hence the repetition was manually removed.
 
 medium pred: SELECT prosody_nodes.word FROM prosody_nodes WHERE prosody_graph.filesequence = 1 AND syntax_terminal_nodes.word = 3
