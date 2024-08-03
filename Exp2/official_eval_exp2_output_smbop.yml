@@ -1,23 +1,26 @@
-medium pred: SELECT syntax_terminal_nodes.word FROM syntax_terminal_nodes JOIN syntax_graph ON syntax_terminal_nodes.syntax_terminal_graph_id = syntax_graph.sentence_number WHERE info_status_target_syn_root.sentence_number = 3 GROUP BY syntax_terminal_nodes.word
-medium gold: SELECT word FROM syntax_terminal_nodes WHERE sentence_number = 3 AND sequence = 1
-
-easy pred: SELECT COUNT( * ) FROM syntax_graph WHERE syntax_graph.sentence_number = 3
+easy pred: SELECT syntax_terminal_nodes.word FROM syntax_terminal_nodes JOIN syntax_graph ON syntax_terminal_nodes.syntax_terminal_graph_id = syntax_graph.sentence_number WHERE info_status_target_syn_root.sentence_number = 3 GROUP BY syntax_terminal_nodes.word
 easy gold: SELECT MAX(sequence) FROM syntax_terminal_nodes WHERE sentence_number = 3
 
-medium pred: SELECT syntax_terminal_nodes.pos FROM syntax_terminal_nodes WHERE syntax_terminal_nodes.word = 3
+medium pred: SELECT COUNT( * ) FROM syntax_graph WHERE syntax_graph.sentence_number = 3
 medium gold: SELECT pos FROM syntax_terminal_nodes WHERE sentence_number = 3 ORDER BY sequence
 
 medium pred: SELECT syntax_terminal_nodes.pos FROM syntax_terminal_nodes WHERE syntax_terminal_nodes.word = 3
 medium gold: SELECT pos FROM syntax_terminal_nodes WHERE sentence_number = 3 AND sequence = 1
 
-easy pred: SELECT node.graph_id FROM syntax_nonterminal_nodes JOIN node ON syntax_nonterminal_nodes.syntax_nonterminal_node_id = node.node_id WHERE info_status_target_syn_root.sentence_number = 3
+easy pred: SELECT syntax_terminal_nodes.pos FROM syntax_terminal_nodes WHERE syntax_terminal_nodes.word = 3
 easy gold: SELECT syntax_graph_id FROM syntax_graph WHERE sentence_number = 3
 
-medium pred: SELECT prosody_nodes.accents FROM prosody_nodes WHERE prosody_nodes.file_sequence = 'dlf-nachrichten-200703262000' EXCEPT SELECT prosody_nodes.accents FROM prosody_nodes WHERE prosody_nodes.tone = 'dlf-nachrichten-200703262000'
+medium pred: SELECT node.graph_id FROM syntax_nonterminal_nodes JOIN node ON syntax_nonterminal_nodes.syntax_nonterminal_node_id = node.node_id WHERE info_status_target_syn_root.sentence_number = 3
 medium gold: SELECT word FROM prosody_nodes WHERE tone = 'NONE' AND file_sequence = 'dlf-nachrichten-200703262000'
 
-easy pred: SELECT info_status_target_syn_root.info_status_label FROM info_status_target_syn_root JOIN node ON info_status_target_syn_root.syn_graph_id = node.graph_id WHERE node.node_id = 900514
+easy pred: SELECT prosody_nodes.accents FROM prosody_nodes WHERE prosody_nodes.file_sequence = 'dlf-nachrichten-200703262000' EXCEPT SELECT prosody_nodes.accents FROM prosody_nodes WHERE prosody_nodes.tone = 'dlf-nachrichten-200703262000'
 easy gold: SELECT info_status_label FROM info_status_target_syn_root WHERE syn_root_id = 900614
+
+medium pred: SELECT info_status_target_syn_root.info_status_label FROM info_status_target_syn_root JOIN node ON info_status_target_syn_root.syn_graph_id = node.graph_id WHERE node.node_id = 900514
+medium gold: SELECT node_type, node_group FROM node WHERE node_id = 900620
+
+medium pred: SELECT node.node_type, node.node_group FROM node WHERE node.node_id = '900620'
+medium gold: SELECT word FROM syntax_terminal_nodes WHERE sentence_number = 3 AND sequence = 1
 
 medium pred: SELECT edge.edge_group FROM edge WHERE edge.source_graph = 56666 AND edge.target_graph = 56690
 medium gold: SELECT edge_group FROM edge WHERE source_node = 56666 AND source_graph = 1349 AND target_node = 56690
@@ -28,41 +31,41 @@ easy gold: SELECT name FROM graph_type_definition WHERE graph_type_group = 'tige
                      easy                 medium               hard                 extra                all                 
 count                4                    6                    0                    0                    10                  
 =====================   EXECUTION ACCURACY     =====================
-execution            0.000                0.167                0.000                0.000                0.100               
+execution            0.000                0.000                0.000                0.000                0.000               
 
 ====================== EXACT MATCHING ACCURACY =====================
-exact match          0.000                0.167                0.000                0.000                0.100               
+exact match          0.000                0.000                0.000                0.000                0.000               
 
 ---------------------PARTIAL MATCHING ACCURACY----------------------
-select               0.750                0.833                0.000                0.000                0.800               
-select(no AGG)       0.750                0.833                0.000                0.000                0.800               
-where                0.750                0.167                0.000                0.000                0.400               
-where(no OP)         0.750                0.167                0.000                0.000                0.400               
+select               0.250                0.333                0.000                0.000                0.300               
+select(no AGG)       0.250                0.333                0.000                0.000                0.300               
+where                0.250                0.333                0.000                0.000                0.300               
+where(no OP)         0.250                0.333                0.000                0.000                0.300               
 group(no Having)     0.000                0.000                0.000                0.000                0.000               
 group                0.000                0.000                0.000                0.000                0.000               
 order                0.000                0.000                0.000                0.000                0.000               
 and/or               1.000                0.500                0.000                0.000                0.700               
 IUEN                 0.000                0.000                0.000                0.000                0.000               
-keywords             1.000                0.500                0.000                0.000                0.700               
+keywords             0.500                0.833                0.000                0.000                0.700               
 ---------------------- PARTIAL MATCHING RECALL ----------------------
-select               0.750                0.833                0.000                0.000                0.800               
-select(no AGG)       0.750                0.833                0.000                0.000                0.800               
-where                0.750                0.167                0.000                0.000                0.400               
-where(no OP)         0.750                0.167                0.000                0.000                0.400               
+select               0.250                0.333                0.000                0.000                0.300               
+select(no AGG)       0.250                0.333                0.000                0.000                0.300               
+where                0.250                0.333                0.000                0.000                0.300               
+where(no OP)         0.250                0.333                0.000                0.000                0.300               
 group(no Having)     0.000                0.000                0.000                0.000                0.000               
 group                0.000                0.000                0.000                0.000                0.000               
 order                0.000                0.000                0.000                0.000                0.000               
 and/or               1.000                1.000                0.000                0.000                1.000               
 IUEN                 0.000                0.000                0.000                0.000                0.000               
-keywords             1.000                0.500                0.000                0.000                0.700               
+keywords             0.500                0.833                0.000                0.000                0.700               
 ---------------------- PARTIAL MATCHING F1 --------------------------
-select               0.750                0.833                0.000                0.000                0.800               
-select(no AGG)       0.750                0.833                0.000                0.000                0.800               
-where                0.750                0.167                0.000                0.000                0.400               
-where(no OP)         0.750                0.167                0.000                0.000                0.400               
+select               0.250                0.333                0.000                0.000                0.300               
+select(no AGG)       0.250                0.333                0.000                0.000                0.300               
+where                0.250                0.333                0.000                0.000                0.300               
+where(no OP)         0.250                0.333                0.000                0.000                0.300               
 group(no Having)     1.000                1.000                0.000                0.000                1.000               
 group                1.000                1.000                0.000                0.000                1.000               
 order                1.000                1.000                0.000                0.000                1.000               
 and/or               1.000                0.667                0.000                0.000                0.824               
 IUEN                 1.000                1.000                0.000                0.000                1.000               
-keywords             1.000                0.500                0.000                0.000                0.700               
+keywords             0.500                0.833                0.000                0.000                0.700               
