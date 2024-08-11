@@ -14,6 +14,6 @@ echo "Start process the origin Spider dataset"
 python ./preprocess/data_process.py --data_path ${data} --table_path ${table_data} --output "process_data.json"
 
 echo "Start generate SemQL from SQL"
-python ./preprocess/sql2SemQL.py --data_path process_data.json --table_path ${table_data} --output ${output} # in the original script, it states ${data} but I believe it is a typo. 
+python ./preprocess/sql2SemQL.py --data_path process_data.json --table_path ${table_data} --output ${output} # in the original script, it states ${data} instead of ${output} but I believe it is a typo. 
 
 rm process_data.json
