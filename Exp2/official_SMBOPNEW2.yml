@@ -19,6 +19,9 @@ medium gold: SELECT word FROM prosody_nodes WHERE tone = 'NONE' AND file_sequenc
 easy pred: SELECT info_status_target_syn_root.info_status_label FROM info_status_target_syn_root JOIN node ON info_status_target_syn_root.syn_graph_id = node.graph_id WHERE node.node_id = 900514
 easy gold: SELECT info_status_label FROM info_status_target_syn_root WHERE syn_root_id = 900614
 
+medium pred: SELECT node.node_type, node.node_group FROM node WHERE node.node_id = '900620'
+medium gold: SELECT node_type, node_group FROM node WHERE node_id = 900620
+
 medium pred: SELECT edge.edge_group FROM edge WHERE edge.source_graph = 56666 AND edge.target_graph = 56690
 medium gold: SELECT edge_group FROM edge WHERE source_node = 56666 AND source_graph = 1349 AND target_node = 56690
 
