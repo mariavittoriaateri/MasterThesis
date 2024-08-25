@@ -208,7 +208,7 @@ def calculate_similarity(set1, set2):
     intersection = set1.intersection(set2)
     union = set1.union(set2)
     
-    return len(intersection) / len(union) # if union else 1.0  TO Avoid division by zero (for now we dont write it lets see)
+    return len(intersection) / len(union)
 
 def calculate_ngram_overlap(set1, set2, n=3):
     """
